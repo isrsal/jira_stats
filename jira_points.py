@@ -7,7 +7,7 @@ pasword=""
 project="Data"
 
 jira = JIRA("https://eyeview.atlassian.net",basic_auth=(user_name, pasword))
-issues = jira.search_issues('project=%s and sprint in openSprints ()' % project)
+issues = jira.search_issues('project=%s and sprint in openSprints ()' % project, maxResults=500)
 x=[(i.fields.status.name, i.fields.customfield_10004) for i in issues]
 x.sort()
 y=groupby(x,key = lambda x:x[0])
